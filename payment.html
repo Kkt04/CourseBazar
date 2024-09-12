@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Page</title>
+    <link rel="stylesheet" href="payment.css">
+</head>
+<body>
+   <centre> <h1>Rs. 3000 for all courses</h1>
+    <div class="payment-container">
+        <h1>Complete Your Payment</h1>
+        <p id="course-name">You are enrolling in our Course </p>
+
+        <form id="payment-form">
+            <label for="cardholder-name">Cardholder's Name</label>
+            <input type="text" id="cardholder-name" required placeholder="Enter name">
+
+            <label for="card-number">Card Number</label>
+            <input type="text" id="card-number" required placeholder="1234-5678-9101-1121" maxlength="16">
+
+            <label for="expiry">Expiry Date</label>
+            <input type="month" id="expiry" required>
+
+            <label for="cvv">CVV</label>
+            <input type="text" id="cvv" required placeholder="123" maxlength="3">
+
+            <button type="submit" id="pay-now">Pay Now</button>
+        </form>
+
+        <p class="success-message" id="success-message" style="display: none;">Payment Successful!</p>
+    </div>
+    <script>
+        function redirectToPayment(courseName) {
+        const paymentUrl = `payment.html?course=${courseName}`;
+        window.location.href = paymentUrl;
+    }
+
+    const enrollButtons = document.querySelectorAll('.enroll-btn');
+    enrollButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const course = this.getAttribute('data-course');
+            redirectToPayment(course);
+        });
+    });
+    alert("Payment Successfully Completed");
+    </script>
+</body>
+</html>
